@@ -73,4 +73,8 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 2rem;
+}
+.contact-message{
+    height: 170px;
 }
