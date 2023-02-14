@@ -1,9 +1,9 @@
     async function getPhotographers() {
         const url = "./../data/photographers.json";
         const res = await fetch(url);
-        const data = res.json();
+        const data = await res.json();
         return data;
-
+    
     }
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
@@ -22,4 +22,5 @@
     };
     
     init();
+
     

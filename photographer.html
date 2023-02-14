@@ -2,10 +2,13 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
@@ -13,30 +16,56 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photograph-infos">
+          <h1 class="name-profil"></h1>
+          <p class="location-city"></p>
+          <p class="tagline"></p>
+        </div>
+        <button class="contact_button" onclick="displayModal()">
+          Contactez-moi
+        </button>
       </div>
     </main>
+    <div id="sort">
+      <label for="sort-photo">Trier par</label>
+      <select id="sort-photo">
+        <option value="popularite">Popularité</option>
+        <option value="date">Date</option>
+        <option value="titre">Titre</option>
+      </select>
+    </div>
+    <section id="photographers-media">
+
+    </section>
+  
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label for="First name">Prénom</label>
-						<input type="text" name="First name" id="First name"/>
-						<label for="Last name">Nom</label>
-						<input type="text" name="Last name" id="Last name"/>
-						<label for="Email">Email</label>
-						<input type="text" name="Email" id="Email"/>
-						<label for="Message">Votre message</label>
-						<textarea type="text" name="Message" id="Message" ></textarea>
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+
+        <form>
+          <div>
+            <label for="First name">Prénom</label>
+            <input type="text" name="First name" id="First name" />
+            <label for="Last name">Nom</label>
+            <input type="text" name="Last name" id="Last name" />
+            <label for="Email">Email</label>
+            <input type="text" name="Email" id="Email" />
+            <label for="Message">Votre message</label>
+            <textarea type="text" name="Message" id="Message"></textarea>
+          </div>
+          <button
+            class="contact_button closeModal"
+            onclick="Send()"
+            aria-label="Send"
+          >
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
