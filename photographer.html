@@ -4,6 +4,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
@@ -12,7 +13,9 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html">
+        <img src="assets/images/logo.png"  class="logo" alt="Fisheye Home page">
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -21,7 +24,7 @@
           <p class="location-city"></p>
           <p class="tagline"></p>
         </div>
-        <button class="contact_button" onclick="displayModal()">
+        <button class="contact_button" >
           Contactez-moi
         </button>
       </div>
@@ -34,7 +37,7 @@
         <option value="titre">Titre</option>
       </select>
     </div>
-    <section id="photographers-media">
+    <section id="photographers-media" class="photographers-media">
 
     </section>
   
@@ -42,23 +45,22 @@
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img class="close-cross" src="assets/icons/close.svg"  />
         </header>
 
         <form>
           <div>
             <label for="First name">Prénom</label>
-            <input type="text" name="First name" id="First name" />
+            <input type="text" name="firstName" id="firstName" />
             <label for="Last name">Nom</label>
-            <input type="text" name="Last name" id="Last name" />
+            <input type="text" name="lastName" id="lastName" />
             <label for="Email">Email</label>
-            <input type="text" name="Email" id="Email" />
+            <input type="text" name="email" id="email" />
             <label for="Message">Votre message</label>
-            <textarea type="text" name="Message" id="Message"></textarea>
+            <textarea type="text" name="message" id="message"></textarea>
           </div>
           <button
-            class="contact_button closeModal"
-            onclick="Send()"
+            class="contact_button closeModal send"
             aria-label="Send"
           >
             Envoyer

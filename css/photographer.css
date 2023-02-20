@@ -22,6 +22,7 @@
 }
 
 .photograph-header img {
+
   width: 200px;
   height: 200px;
   object-fit: cover;
@@ -30,15 +31,14 @@
 
 .photograph-infos h1 {
   display: flex;
-  font-size: 64px;
-  color: #D3573C;
+  font-size: 3rem;
+  color: #d3573c;
 }
-.location-city{
+.location-city {
   font-size: 24px;
- color: #901C1C;
-
+  color: #901c1c;
 }
-.tagline{
+.tagline {
   font-size: 18px;
   color: #525252;
 }
@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-#sort{
+#sort {
   margin: 25px 100px;
 }
 
@@ -65,17 +65,13 @@
   font-size: 18px;
   font-weight: 700;
 }
-#sort-photo{
+#sort-photo {
   height: 50px;
-    padding: 0 10px;
-    background-color: #901c1c;
-    border-radius: 5px;
-    color: white;
+  padding: 0 10px;
+  background-color: #901c1c;
+  border-radius: 5px;
+  color: white;
 }
-hr{
-  color: #000;
-}
-
 
 .modal {
   border-radius: 5px;
@@ -139,4 +135,41 @@ textarea {
   max-height: 170px;
   min-height: 170px;
   font-size: 2rem;
+}
+
+.photographers-media{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 100px;
+  gap: 40px 0;
+}
+article {
+  display: flex;
+  flex-direction: column;
+
+  
+}
+article .carroussel-picture{
+  cursor: pointer;
+  width: 340px;
+  height: 300px;
+  object-fit: cover;
+}
+
+article .heart{
+  width: 20px;
+  fill:   #911C1C;;
+ 
+}
+
+.infoPicture{
+  display: flex;
+  justify-content: space-between;
+
+}
+span{
+  display: flex;
+ color: #911C1C;
+  gap: 10px;
 }

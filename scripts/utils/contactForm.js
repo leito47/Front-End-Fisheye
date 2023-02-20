@@ -1,4 +1,21 @@
+const contactButton = document.querySelector(".contact_button");
+contactButton.addEventListener("click", displayModal);
+const closeCross = document.querySelector(".close-cross");
+closeCross.addEventListener("click", closeModal);
+const send = document.querySelector(".send");
+send.addEventListener("click", sendModal);
+const firstNameInput = document.querySelector("#firstName");
+const lastNameInput = document.querySelector("#lastName");
+const emailInput = document.querySelector("#email");
+const messageInput = document.querySelector("#message");
+
+
+
 function displayModal() {
+  firstNameInput.value="";
+  lastNameInput.value="";
+  emailInput.value="";
+  messageInput.value="";
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
   const nameContact = document.querySelector("h2");
@@ -10,18 +27,14 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-function Send(event) {
+function sendModal(event) {
   event.preventDefault();
-
-  const firstNameInput = document.querySelector("#First name").value;
-  const lastNameInput = document.querySelector("#Last name").value;
-  const emailInput = document.querySelector("#Email").value;
-  const messageInput = document.querySelector("#Message").value;
-
-  console.log("Prénom :", firstNameInput);
-  console.log("Nom:", lastNameInput);
-  console.log("Email:", emailInput);
-  console.log("Votre message:", messageInput);
-
+  
+  console.log("Prénom :", firstNameInput.value);
+  console.log("Nom:", lastNameInput.value);
+  console.log("Email:", emailInput.value);
+  console.log("Votre message:", messageInput.value);
+  closeModal()
 }
+
 
