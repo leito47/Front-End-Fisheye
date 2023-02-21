@@ -63,26 +63,37 @@ function displayMedia(idSelectedPhotographer, medias) {
   //Creation element DOM
 
   medias.forEach((media) => {
+    // console.log(medias)
+    let mediaPictureElement;
+
     const article = document.createElement("article");
     const link = document.createElement("a");
-    link.href = "#";
-    const mediaPictureElement = document.createElement("img");
-    mediaPictureElement.alt = media.title;
-    mediaPictureElement.className = "carroussel-picture";
-    mediaPictureElement.src = `assets/images/${idSelectedPhotographer.name}/${
-      media.image ?? media.video
-    }`;
-
     const divInfos = document.createElement("div");
-    divInfos.className = "infoPicture";
     const spanTagline = document.createElement("span");
+    const spanLike = document.createElement("span");
+    const heart = document.createElement("img");
+    // mediaPictureElement.alt = media.title;
+
+    link.href = "#";
+
+    if (media.image) {
+      mediaPictureElement = document.createElement("img");
+      mediaPictureElement.className = "carroussel-picture";
+      mediaPictureElement.src = `assets/images/${idSelectedPhotographer.name}/${media.image}`;
+    } else {
+      mediaPictureElement = document.createElement("video");
+      mediaPictureElement.className = "carroussel-video";
+      mediaPictureElement.src = `assets/images/${idSelectedPhotographer.name}/${media.video}`;
+      //   // button.SetAttribute("aria-label", 'video, $title')
+    }
+    console.log(media.video)
+    divInfos.className = "infoPicture";
+
     spanTagline.style.fontSize = "1.2rem";
     spanTagline.textContent = media.title;
-    const spanLike = document.createElement("span");
-    spanLike.style.fontSize = "1.2rem";
 
+    spanLike.style.fontSize = "1.2rem";
     spanLike.textContent = media.likes;
-    const heart = document.createElement("img");
 
     heart.className = "heart";
     heart.src = "assets/images/heart-solid.svg";

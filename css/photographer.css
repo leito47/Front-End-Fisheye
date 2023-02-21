@@ -156,6 +156,13 @@ article .carroussel-picture{
   height: 300px;
   object-fit: cover;
 }
+article .carroussel-video{
+  cursor: pointer;
+  width: 340px;
+  height: 300px;
+  object-fit: cover;
+}
+
 
 article .heart{
   width: 20px;
