@@ -22,7 +22,6 @@
 }
 
 .photograph-header img {
-
   width: 200px;
   height: 200px;
   object-fit: cover;
@@ -137,46 +136,121 @@ textarea {
   font-size: 2rem;
 }
 
-.photographers-media{
+.photographers-media {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 100px;
+  margin: 0 100px 100px 100px;
   gap: 40px 0;
 }
 article {
   display: flex;
   flex-direction: column;
-
-  
 }
-article .carroussel-picture{
+article .carroussel-picture {
   cursor: pointer;
   width: 340px;
   height: 300px;
   object-fit: cover;
+  object-position: top
 }
-article .carroussel-video{
+article .carroussel-video {
   cursor: pointer;
-  width: 340px;
+  width: 400px;
   height: 300px;
   object-fit: cover;
+  object-position: ;
 }
 
-
-article .heart{
+article .heart {
   width: 20px;
-  fill:   #911C1C;;
- 
+  fill: red;
+  stroke: black;
+}
+.div-counter-heart {
+  display: flex;
+  gap: 5px;
 }
 
-.infoPicture{
+.infoPicture {
   display: flex;
   justify-content: space-between;
-
 }
-span{
+section span {
   display: flex;
- color: #911C1C;
+  color: #911c1c;
   gap: 10px;
+}
+.total-likes-price {
+  width: 180px;
+  height: 10px;
+  position: fixed;
+  bottom: 0px;
+  right: 2rem;
+  padding: 15px 20px;
+  font-weight: bold;
+  background-color: #db8876;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.like-heart {
+  display: flex;
+  gap: 5px;
+}
+.hearts {
+  width: 20px;
+}
+
+.lightbox-image {
+  width: 50%;
+  height: 85%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.lightbox {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f3efef;
+}
+
+.lightbox.show {
+  display: inherit;
+  display: flex;
+  text-align: center;
+}
+#left-arrow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 300px;
+  bottom: 50%;
+  cursor: pointer;
+}
+
+#right-arrow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 300px;
+  bottom: 50%;
+  cursor: pointer;
+}
+
+#close-lightbox {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 300px;
+  bottom: 90%;
+  cursor: pointer;
 }

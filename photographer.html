@@ -4,7 +4,13 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
@@ -14,7 +20,11 @@
   <body>
     <header>
       <a href="./index.html">
-        <img src="assets/images/logo.png"  class="logo" alt="Fisheye Home page">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
       </a>
     </header>
     <main id="main">
@@ -24,28 +34,24 @@
           <p class="location-city"></p>
           <p class="tagline"></p>
         </div>
-        <button class="contact_button" >
-          Contactez-moi
-        </button>
+        <button class="contact_button">Contactez-moi</button>
       </div>
-    </main>
-    <div id="sort">
-      <label for="sort-photo">Trier par</label>
-      <select id="sort-photo">
-        <option value="popularite">Popularité</option>
-        <option value="date">Date</option>
-        <option value="titre">Titre</option>
-      </select>
-    </div>
-    <section id="photographers-media" class="photographers-media">
 
-    </section>
+      <div id="sort">
+        <label for="sort-photo">Trier par</label>
+        <select id="sort-photo">
+          <option value="popularite">Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
+      </div>
+      <section id="photographers-media" class="photographers-media"></section>
   
     <div id="contact_modal">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img class="close-cross" src="assets/icons/close.svg"  />
+          <img class="close-cross" src="assets/icons/close.svg" />
         </header>
 
         <form>
@@ -59,15 +65,13 @@
             <label for="Message">Votre message</label>
             <textarea type="text" name="message" id="message"></textarea>
           </div>
-          <button
-            class="contact_button closeModal send"
-            aria-label="Send"
-          >
+          <button class="contact_button closeModal send" aria-label="Send">
             Envoyer
           </button>
         </form>
       </div>
     </div>
+  </main>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
