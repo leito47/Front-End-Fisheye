@@ -115,22 +115,27 @@ function displayMedia(idSelectedPhotographer, medias) {
     link.href = "#";
 
     if (media.image) {
+      console.log("image");
       mediaPictureElement = document.createElement("img");
       mediaPictureElement.setAttribute("class", "carroussel-picture ");
       mediaPictureElement.setAttribute("alt", media.title);
+      mediaPictureElement.setAttribute(
+        "src",
+        `assets/images/${idSelectedPhotographer.name}/${media.image}`
+      );
     } else {
+      console.log("video");
       mediaPictureElement = document.createElement("video");
       mediaPictureElement.setAttribute("class", "carroussel-video");
       mediaPictureElement.setAttribute("alt", media.title);
       mediaPictureElement.controls = false;
       mediaPictureElement.autoplay = false;
+
+      mediaPictureElement.setAttribute(
+        "src",
+        `assets/images/${idSelectedPhotographer.name}/${media.video}`
+      );
     }
-    mediaPictureElement.setAttribute(
-      "src",
-      `assets/images/${idSelectedPhotographer.name}/${
-        media.image ?? media.video
-      }`
-    );
 
     mediaPictureElement.addEventListener("click", function (e) {
       e.preventDefault();
@@ -140,12 +145,12 @@ function displayMedia(idSelectedPhotographer, medias) {
       }`;
       const lightboxImage = (document.querySelector(".lightbox-image").src =
         mediaPictureElement);
-      // const lightboxAlt= (document.querySelector(".lightbox-image").alt =
-      // mediaPictureElement.alt);
-      //  lightboxImage.controls=true;
-      //  lightboxImage.setAttribute("alt",media.title);
 
-      console.log(lightboxImage);
+      const lightboxImageAlt = (document.querySelector(".lightbox-image").alt =
+        media.title);
+      const lightboxImageId = (document.querySelector(
+        ".lightbox-image"
+      ).dataset.id = media.id);
     });
 
     heart.addEventListener("click", function (e) {
@@ -208,8 +213,7 @@ const modalLightBox = (media) => {
 
   const lightboxImage = document.createElement("img");
   lightboxImage.setAttribute("class", "lightbox-image");
-  lightboxImage.alt = "";
-  lightboxImage.src = "";
+  lightboxImage.setAttribute("data-id", "");
 
   const buttonGauche = document.createElement("img");
   buttonGauche.setAttribute("id", "left-arrow");
@@ -232,18 +236,49 @@ const modalLightBox = (media) => {
   div.appendChild(buttonDroit);
   div.appendChild(buttonClose);
 
-  const clickPreviousLightbox = (buttonGauche) => {
-    buttonGauche.addEventListener("click", function (medias) {
-      const lightboxImage = document.querySelector(".lightbox-image");
-      const currentImageIndex = medias.find((index) => index === medias.id);
+  /**
+   * Event listener click lightBoxImage
+   *
+   */
 
-      console.log(currentImageIndex);
+  const clickPreviousLightbox = (buttonGauche) => {
+    buttonGauche.addEventListener("click", function () {
+      let currentMedia = document.querySelector(".lightbox-image");
+      let lightboxId = parseInt(currentMedia.dataset.id);
+      let currentIndex = medias.findIndex(
+        (element) => element.id === lightboxId
+      );
+      let previousMedia;
+      previousMedia = medias[currentIndex - 1];
+
+      currentMedia.setAttribute(
+        "src",
+        `assets/images/${idSelectedPhotographer.name}/${previousMedia.image}`
+      );
+      currentMedia.setAttribute("alt", previousMedia.title);
+      currentMedia.setAttribute("data-id", previousMedia.id);
+      document.querySelector(".lightbox-image").textContent =
+        previousMedia.title;
     });
   };
 
   const clickNextLightbox = (buttonDroit) => {
     buttonDroit.addEventListener("click", function () {
-      console.log("clic next");
+      let currentMedia = document.querySelector(".lightbox-image");
+      let lightboxId = parseInt(currentMedia.dataset.id);
+      let currentIndex = medias.findIndex(
+        (element) => element.id === lightboxId
+      );
+      let nextMedia;
+      nextMedia = medias[currentIndex + 1];
+
+      currentMedia.setAttribute(
+        "src",
+        `assets/images/${idSelectedPhotographer.name}/${nextMedia.image}`
+      );
+      currentMedia.setAttribute("alt", nextMedia.title);
+      currentMedia.setAttribute("data-id", nextMedia.id);
+      document.querySelector(".lightbox-image").textContent = nextMedia.title;
     });
   };
 
@@ -261,10 +296,6 @@ const modalLightBox = (media) => {
   clickCloseLightbox(buttonClose);
 };
 
-// buttonGauche.addEventListener("click" =()=>{console.log('ok')});
-// buttonDroit.addEventListener("click", function () {});
-// buttonClose.addEventListener("click", function () {});
-
 const selectSort = document.getElementById("sort-photo");
 selectSort.addEventListener("change", function (a, b) {
   const selectedValue = selectSort.value;
@@ -274,24 +305,23 @@ selectSort.addEventListener("change", function (a, b) {
     case "popularite":
       medias.sort((a, b) => b.likes - a.likes);
       console.log(selectedValue, medias);
-    
+
       break;
 
     // sort by date
     case "date":
       medias.sort((a, b) => new Date(b.date) - new Date(a.date));
       console.log(selectedValue, medias);
-    
+
       break;
 
     // sort by title
     case "titre":
       medias.sort((a, b) => a.title.localeCompare(b.title));
-
+      console.log(selectedValue, medias);
       break;
 
     default:
       console.log("Choix invalide !");
   }
-
 });
