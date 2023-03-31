@@ -15,18 +15,34 @@
   height: 300px;
   margin: 0 100px;
 }
-
-.photograph-header {
-  color: #901c1c;
-  margin-right: 100px;
+@media screen and (max-width: 1000px) {
+  .photograph-header {
+    display: flex;
+    flex-direction: column;
+    padding: 0 75px 225px 75px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .photograph-header {
+    padding: 0 75px 340px 75px;
+  }
 }
 
+/* .photograph-header {
+  color: #901c1c;
+  margin-right: 100px;
+} */
 .photograph-header img {
   width: 200px;
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
   overflow-clip-margin: unset;
+}
+@media screen and (max-width: 1000px) {
+  .photograph-header img {
+    margin-top: 25px;
+  }
 }
 
 .photograph-infos h1 {
@@ -97,13 +113,35 @@
 
 .modal header img {
   cursor: pointer;
+  position: relative;
+  bottom: 25px;
+  left: 0;
+}
+@media screen and (max-width: 800px) {
+  .modal header img {
+    position: relative;
+    bottom: 63px;
+    left: 135px;
+  }
 }
 
 .modal header h2 {
-  margin-top: 125px;
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
+  margin-top: 50px;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: inherit;
+}
+@media screen and (max-width: 1000px) {
+  .modal header h2 {
+    margin-top: 37px;
+    font-size: 2.4rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .modal header h2 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
 }
 
 form {
@@ -212,6 +250,11 @@ section span {
   object-fit: cover;
   object-position: top;
 }
+@media screen and (max-width: 1250px) {
+  .lightbox-image {
+    width: 35%;
+  }
+}
 
 .lightbox {
   display: none;
@@ -253,4 +296,7 @@ section span {
   right: 300px;
   bottom: 90%;
   cursor: pointer;
+}
+a {
+  text-decoration: none;
 }

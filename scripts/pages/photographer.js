@@ -51,7 +51,7 @@ function fillHeader(idSelectedPhotographer) {
   // add picture of photographer
   const picture = `assets/photographers/${portrait}`;
   const header = document.querySelector(".photograph-header");
-  const headerInfos = document.querySelector(".photograph-infos");
+
   const nameProfil = document.querySelector(".name-profil");
   const locationCity = document.querySelector(".location-city");
   const tagLine = document.querySelector(".tagline");
@@ -71,13 +71,14 @@ function fillHeader(idSelectedPhotographer) {
   const totalSpanLike = document.createElement("span");
   const totalHeart = document.createElement("img");
   totalHeart.setAttribute("class", "hearts");
+  totalHeart.setAttribute("alt", "image heart like total");
   totalHeart.src = "assets/images/heart-solid black.svg";
   const totalPricePerDay = document.createElement("span");
 
   const totalLikesSum = medias.reduce((total, media) => total + media.likes, 0);
   totalSpanLike.textContent = totalLikesSum.toString();
 
-  totalPricePerDay.textContent = `${idSelectedPhotographer.price} €/jour`;
+  totalPricePerDay.textContent = `${price} €/jour`;
 
   main.appendChild(totalLikes);
   totalLikes.appendChild(div);
@@ -92,11 +93,10 @@ function displayMedia(idSelectedPhotographer, medias) {
 
   medias.forEach((media) => {
     let mediaPictureElement;
-
+    const link = document.createElement("a");
     const article = document.createElement("article");
     article.setAttribute("data-id", media.id);
 
-    const link = document.createElement("a");
     const divInfos = document.createElement("div");
     const spanTagline = document.createElement("span");
     const divCounterHeart = document.createElement("div");
@@ -105,6 +105,7 @@ function displayMedia(idSelectedPhotographer, medias) {
     spanLike.setAttribute("class", "counter-like");
     const heart = document.createElement("img");
     heart.setAttribute("class", "heart");
+    heart.setAttribute("alt", " image heart like");
     divInfos.className = "infoPicture";
     spanTagline.style.fontSize = "1.2rem";
     spanTagline.textContent = media.title;
@@ -133,8 +134,8 @@ function displayMedia(idSelectedPhotographer, medias) {
       updateTotalLike();
     });
 
-    photographersMedia.appendChild(article);
-    article.appendChild(link);
+    photographersMedia.appendChild(link);
+    link.appendChild(article);
     article.appendChild(mediaPictureElement);
     article.appendChild(divInfos);
     divInfos.appendChild(spanTagline);
@@ -183,6 +184,8 @@ const modalLightBox = () => {
 
         /* Select the current media */
         let currentMedia = event.target.src;
+        let mediaId = event.target.parentNode.dataset.id;
+
         let modaLightboxElement;
         const extensionCurrentMedia = currentMedia.split(".").pop();
 
@@ -194,7 +197,7 @@ const modalLightBox = () => {
         }
 
         modaLightboxElement.setAttribute("class", "lightbox-image");
-        modaLightboxElement.setAttribute("data-id", idSelectedPhotographer.id);
+        modaLightboxElement.setAttribute("data-id", mediaId);
         modaLightboxElement.src = currentMedia;
         modaLightboxElement.alt = idSelectedPhotographer.name;
 
@@ -238,13 +241,14 @@ const modalLightBox = () => {
       let currentIndex = medias.findIndex(
         (element) => element.id === lightboxId
       );
-
       let previousMedia;
       if (currentIndex <= 0) {
         previousMedia = medias[medias.length - 1];
       } else {
         previousMedia = medias[currentIndex - 1];
       }
+
+      console.log("id", previousMedia, currentIndex, lightboxId);
 
       const mediaPrevious = previousMedia.image ?? previousMedia.video;
       const extensionCurrentMedia = mediaPrevious.split(".").pop();
@@ -282,12 +286,11 @@ const modalLightBox = () => {
       );
 
       let nextMedia;
-      if (currentIndex <= 0) {
-        nextMedia = medias[medias.length - 1];
+      if (currentIndex === medias.length - 1) {
+        nextMedia = medias[0];
       } else {
-        nextMedia = medias[currentIndex - 1];
+        nextMedia = medias[currentIndex + 1];
       }
-
       const mediaNext = nextMedia.image ?? nextMedia.video;
       const extensionCurrentMedia = mediaNext.split(".").pop();
       let modaLightboxElement = "";
@@ -320,6 +323,7 @@ const modalLightBox = () => {
 
     const closeLightboxFn = () => {
       closeLightbox.classList.remove("active");
+      document.querySelector(".lightbox-image").remove();
     };
 
     buttonClose.addEventListener("click", closeLightboxFn);
@@ -349,19 +353,16 @@ function orderMedias(idSelectedPhotographer, medias) {
       // sort by popularite
       case "popularite":
         medias.sort((a, b) => b.likes - a.likes);
-
         break;
 
       // sort by date
       case "date":
         medias.sort((a, b) => new Date(b.date) - new Date(a.date));
-
         break;
 
       // sort by title
       case "titre":
         medias.sort((a, b) => a.title.localeCompare(b.title));
-
         break;
 
       default:
@@ -371,5 +372,6 @@ function orderMedias(idSelectedPhotographer, medias) {
       "#photographers-media"
     ).innerHTML = "");
     displayMedia(idSelectedPhotographer, medias);
+    modalLightBox();
   });
 }
