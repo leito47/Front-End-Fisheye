@@ -105,7 +105,7 @@ function displayMedia(idSelectedPhotographer, medias) {
     spanLike.setAttribute("class", "counter-like");
     const heart = document.createElement("img");
     heart.setAttribute("class", "heart");
-    heart.setAttribute("alt", " image heart like");
+    heart.setAttribute("alt", " like");
     divInfos.className = "infoPicture";
     spanTagline.style.fontSize = "1.2rem";
     spanTagline.textContent = media.title;
@@ -346,7 +346,9 @@ const modalLightBox = () => {
 
 function orderMedias(idSelectedPhotographer, medias) {
   const selectSort = document.getElementById("sort-photo");
-  selectSort.addEventListener("change", function () {
+
+  selectSort.value = "popularite";
+  const sortMedias = () => {
     const selectedValue = selectSort.value;
 
     switch (selectedValue) {
@@ -368,10 +370,19 @@ function orderMedias(idSelectedPhotographer, medias) {
       default:
         console.log("Choix invalide !");
     }
-    const resetSort = (document.querySelector(
-      "#photographers-media"
-    ).innerHTML = "");
+    const mediaContainer = document.querySelector("#photographers-media");
+
+    // Clear window contents before displaying sorted media
+    while (mediaContainer.firstChild) {
+      mediaContainer.removeChild(mediaContainer.firstChild);
+    }
+
     displayMedia(idSelectedPhotographer, medias);
     modalLightBox();
-  });
+  };
+  // Call the sort function on page load
+  sortMedias();
+
+  // Add an event listener on selection change
+  selectSort.addEventListener("change", sortMedias);
 }

@@ -1,3 +1,5 @@
+//element of modal contact me
+
 const contactButton = document.querySelector(".contact_button");
 contactButton.addEventListener("click", displayModal);
 const closeCross = document.querySelector(".close-cross");
@@ -21,11 +23,13 @@ function displayModal() {
   nameContact.innerHTML = "Contactez-moi \n " + idSelectedPhotographer.name;
 }
 
+//close modal
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
 }
 
+//recover in console the elements of the modal contact me
 function sendModal(event) {
   event.preventDefault();
 

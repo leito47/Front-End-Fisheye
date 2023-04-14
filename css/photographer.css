@@ -37,7 +37,7 @@
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
-  overflow-clip-margin: unset;
+  /* overflow-clip-margin: unset; */
 }
 @media screen and (max-width: 1000px) {
   .photograph-header img {
