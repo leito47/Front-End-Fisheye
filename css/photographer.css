@@ -204,6 +204,9 @@ article .heart {
   fill: red;
   stroke: black;
 }
+article .heart:focus {
+  outline: 2px solid black;
+}
 .div-counter-heart {
   display: flex;
   gap: 5px;
@@ -250,6 +253,7 @@ section span {
   object-fit: cover;
   object-position: top;
 }
+
 @media screen and (max-width: 1250px) {
   .lightbox-image {
     width: 35%;

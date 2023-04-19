@@ -22,12 +22,22 @@ function displayModal() {
   const nameContact = document.querySelector("h2");
   nameContact.innerHTML = "Contactez-moi \n " + idSelectedPhotographer.name;
 }
-
-//close modal
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
 }
+
+// Close modal when clicking on close cross
+const closeCrossevent = document.querySelector(".close-cross");
+closeCross.setAttribute("alt", "croix de fermeture");
+closeCross.addEventListener("click", closeModal);
+
+// Close modal when pressing escape key
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
 
 //recover in console the elements of the modal contact me
 function sendModal(event) {
